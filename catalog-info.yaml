@@ -30,6 +30,23 @@ metadata:
   annotations:
     pulumi.com/orga-slug: dirien
     backstage.io/kubernetes-namespace: flux-system
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=flux'
+    backstage.io/kubernetes-id: gitops-cluster
+spec:
+  owner: infrastructure
+  domain: gitops-platform
+  type: service
+  lifecycle: experimental
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pulumi-operator
+  description: Pulumi operator
+  annotations:
+    pulumi.com/orga-slug: dirien
+    backstage.io/kubernetes-namespace: pulumi-operator
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/name=pulumi-kubernetes-operator'
     backstage.io/kubernetes-id: gitops-cluster
 spec:
   owner: infrastructure
