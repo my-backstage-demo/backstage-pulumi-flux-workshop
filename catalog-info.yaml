@@ -30,6 +30,7 @@ metadata:
   annotations:
     pulumi.com/orga-slug: dirien
     backstage.io/kubernetes-namespace: flux-system
+    backstage.io/kubernetes-id: gitops-cluster
 spec:
   owner: infrastructure
   domain: gitops-platform
