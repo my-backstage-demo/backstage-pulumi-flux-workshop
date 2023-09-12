@@ -1,0 +1,45 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: infrastructure
+  description: The infra team
+spec:
+  type: team
+  profile:
+    displayName: Infrastructure
+  children:
+  - default
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: development
+  description: The development team
+spec:
+  type: team
+  profile:
+    displayName: Development
+  children:
+  - default
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flux
+  description: GitOps operator
+  annotations:
+    pulumi.com/orga-slug: dirien
+    backstage.io/kubernetes-namespace: flux-system
+spec:
+  owner: infrastructure
+  domain: gitops-platform
+  type: service
+  lifecycle: experimental
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: gitops-platform
+  description: GitOps Platform
+spec:
+  owner: infrastructure
