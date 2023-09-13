@@ -37,6 +37,7 @@ spec:
   domain: gitops-platform
   type: service
   lifecycle: experimental
+  system: gitops-system
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -44,7 +45,7 @@ metadata:
   name: pulumi-operator
   description: Pulumi operator
   annotations:
-    pulumi.com/orga-slug: dirien
+    pulumi.com/project-slug: dirien/pulumi-backstage-flux-gitops-aws/dev
     backstage.io/kubernetes-namespace: pulumi-operator
     #backstage.io/kubernetes-label-selector: 'app.kubernetes.io/name=pulumi-kubernetes-operator'
     backstage.io/kubernetes-id: gitops-cluster
@@ -53,6 +54,7 @@ spec:
   domain: gitops-platform
   type: service
   lifecycle: experimental
+  system: gitops-system
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Domain
@@ -61,3 +63,14 @@ metadata:
   description: GitOps Platform
 spec:
   owner: infrastructure
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: gitops-system
+  annotations:
+    pulumi.com/orga-slug: dirien
+spec:
+  owner: infrastructure
+  description: GitOps System
+  domain: gitops-platform
