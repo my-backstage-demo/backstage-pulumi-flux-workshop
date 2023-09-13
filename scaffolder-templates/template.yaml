@@ -67,7 +67,7 @@ spec:
         name: ${{parameters.name}}
         content: ${{parameters.content}}
         region: ${{parameters.region}}
-        stack: dirien/${{parameters.name}}/${{parameters.stack}}
+        stack: ediri/${{parameters.name}}/${{parameters.stack}}
 
   - id: publish
     name: Publish
