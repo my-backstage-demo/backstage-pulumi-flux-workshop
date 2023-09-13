@@ -1,0 +1,32 @@
+apiVersion: pulumi.com/v1
+kind: Program
+metadata:
+  name: ${{values.name }}
+program:
+  resources:
+    bucket:
+      type: aws:s3:Bucket
+      properties:
+        website:
+          indexDocument: index.html
+    index.html:
+      type: aws:s3:BucketObject
+      properties:
+        bucket: ${bucket.id}
+        content: <h1>${{values.content}}</h1>
+        contentType: text/html
+        acl: public-read
+  outputs:
+    url: http://${bucket.websiteEndpoint}
+---
+apiVersion: pulumi.com/v1
+kind: Stack
+metadata:
+  name: staticwebsite
+spec:
+  stack: ${{values.stack}}
+  programRef:
+    name: ${{values.name }}
+  destroyOnFinalize: true
+  config:
+    aws:region: ${{values.region}}
