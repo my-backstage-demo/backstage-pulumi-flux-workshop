@@ -39,18 +39,6 @@ spec:
           This will be used to group the resources
           and to name the pulumi stack    
 
-  - title: Choose a location
-    required:
-    - repoUrl
-    properties:
-      repoUrl:
-        title: Repository Location
-        type: string
-        ui:field: RepoUrlPicker
-        ui:options:
-          allowedHosts:
-          - github.com
-
   steps:
   - id: fetch-base
     name: Fetch Base
@@ -67,7 +55,7 @@ spec:
     name: Publish
     action: publish:github:pull-request
     input:
-      repoUrl: github.com?repo=pulumi-infrastructure&org=my-backstage-demo
+      repoUrl: github.com?repo=pulumi-infrastructure&owner=my-backstage-demo
       title: "Create new project: ${{parameters.name}}"
       branchName: create-${{parameters.name}}
       description: |
