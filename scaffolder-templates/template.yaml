@@ -67,7 +67,7 @@ spec:
     name: Publish
     action: publish:github:pull-request
     input:
-      repoUrl: https://github.com/my-backstage-demo/pulumi-infrastructure
+      repoUrl: github.com/my-backstage-demo/pulumi-infrastructure
       title: "Create new project: ${{parameters.name}}"
       branchName: create-${{parameters.name}}
       description: |
