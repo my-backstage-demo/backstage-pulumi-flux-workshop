@@ -27,7 +27,7 @@ spec:
         type: string
         ui:widget: textarea
         ui:options:
-          rows: 20
+          rows: 10
         description: |
           The content of the website
           This will be written to the index.html file

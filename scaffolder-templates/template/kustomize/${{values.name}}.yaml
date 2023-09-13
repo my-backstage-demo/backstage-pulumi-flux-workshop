@@ -39,7 +39,8 @@ program:
       type: aws:s3:BucketObject
       properties:
         bucket: ${bucket.id}
-        content: <h1>${{values.content}}</h1>
+        content: |
+          ${{values.content}}
         contentType: text/html
         acl: public-read
     outputs:
