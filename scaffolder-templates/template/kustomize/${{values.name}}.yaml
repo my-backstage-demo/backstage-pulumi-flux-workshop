@@ -5,10 +5,36 @@ metadata:
 program:
   resources:
     bucket:
-      type: aws:s3:Bucket
+      type: aws:s3:BucketV2
+    bucketOwnershipControls:
+      type: aws:s3:BucketOwnershipControls
       properties:
-        website:
-          indexDocument: index.html
+        bucket: ${bucket.id}
+        rule:
+          objectOwnership: BucketOwnerPreferred
+    bucketPublicAccessBlock:
+      type: aws:s3:BucketPublicAccessBlock
+      properties:
+        bucket: ${bucket.id}
+        blockPublicAcls: false
+        blockPublicPolicy: false
+        ignorePublicAcls: false
+        restrictPublicBuckets: false
+    bucketACL:
+      type: aws:s3:BucketAclV2
+      properties:
+        bucket: ${bucket.id}
+        acl: public-read
+      options:
+        dependsOn:
+        - ${bucketOwnershipControls}
+        - ${bucketPublicAccessBlock}
+    webSiteContent:
+      type: aws:s3:BucketWebsiteConfigurationV2
+      properties:
+        bucket: ${bucket.id}
+        indexDocument:
+          suffix: index.html
     index.html:
       type: aws:s3:BucketObject
       properties:
@@ -16,8 +42,8 @@ program:
         content: <h1>${{values.content}}</h1>
         contentType: text/html
         acl: public-read
-  outputs:
-    url: http://${bucket.websiteEndpoint}
+    outputs:
+      url: http://${webSiteContent.websiteEndpoint}
 ---
 apiVersion: pulumi.com/v1
 kind: Stack
@@ -38,6 +64,6 @@ spec:
         key: AWS_SECRET_ACCESS_KEY
   programRef:
     name: ${{values.name }}
-  destroyOnFinalize: true
+  destroyOnFinalize: false
   config:
     aws:region: ${{values.region}}
