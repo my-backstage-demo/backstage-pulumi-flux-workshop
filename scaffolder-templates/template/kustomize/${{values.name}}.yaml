@@ -22,7 +22,7 @@ program:
 apiVersion: pulumi.com/v1
 kind: Stack
 metadata:
-  name: staticwebsite
+  name: ${{values.name }}
 spec:
   stack: ${{values.stack}}
   programRef:
