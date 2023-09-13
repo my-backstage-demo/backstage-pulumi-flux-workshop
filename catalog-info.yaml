@@ -28,7 +28,7 @@ metadata:
   name: flux
   description: GitOps operator
   annotations:
-    pulumi.com/orga-slug: dirien
+    pulumi.com/project-slug: dirien/pulumi-backstage-flux-gitops-aws/dev
     backstage.io/kubernetes-namespace: flux-system
     #backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=flux'
     backstage.io/kubernetes-id: gitops-cluster
