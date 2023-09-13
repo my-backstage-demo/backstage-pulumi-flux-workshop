@@ -54,12 +54,12 @@ spec:
   stack: ${{values.stack}}
   envRefs:
     AWS_ACCESS_KEY_ID:
-      type: secret
+      type: Secret
       secret:
         name: aws-credentials
         key: AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY:
-      type: secret
+      type: Secret
       secret:
         name: aws-credentials
         key: AWS_SECRET_ACCESS_KEY
