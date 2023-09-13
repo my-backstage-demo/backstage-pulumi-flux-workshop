@@ -18,7 +18,7 @@ spec:
         title: Name
         type: string
         maxLength: 16
-        pattern: "^[a-z0-9\-]*$"
+        pattern: "^[a-z0-9-]*$"
         description: Unique name of the component
         ui:field: EntityNamePicker
         ui:autofocus: true
