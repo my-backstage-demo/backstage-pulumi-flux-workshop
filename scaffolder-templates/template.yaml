@@ -17,27 +17,44 @@ spec:
       name:
         title: Name
         type: string
+        maxLength: 16
+        pattern: "^[a-z0-9\-]*$"
         description: Unique name of the component
         ui:field: EntityNamePicker
         ui:autofocus: true
       content:
         title: Website Content
         type: string
+        ui:widget: textarea
+        ui:options:
+          rows: 20
         description: |
           The content of the website
           This will be written to the index.html file
       region:
         title: Region
         type: string
+        enum:
+          - eu-central-1
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+        default: eu-central-1
         description: |
           The region to deploy the bucket
       stack:
-        title: Stack
+        title: Select stack
         type: string
-        description: |
-          The stack to deploy the bucket
-          This will be used to group the resources
-          and to name the pulumi stack    
+        enum:
+        - dev
+        - staging
+        - prod
+        enumNames:
+        - Development
+        - Staging
+        - Production
+        description: The pulumi stack to use
 
   steps:
   - id: fetch-base
@@ -49,7 +66,7 @@ spec:
         name: ${{parameters.name}}
         content: ${{parameters.content}}
         region: ${{parameters.region}}
-        stack: ${{parameters.stack}}
+        stack: dirien/${{parameters.name}}/${{parameters.stack}}
 
   - id: publish
     name: Publish
