@@ -43,8 +43,8 @@ program:
           ${{values.content}}
         contentType: text/html
         acl: public-read
-    outputs:
-      url: http://${webSiteContent.websiteEndpoint}
+  outputs:
+    url: http://${webSiteContent.websiteEndpoint}
 ---
 apiVersion: pulumi.com/v1
 kind: Stack
