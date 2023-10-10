@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: templates
+  description: All the templates in the scaffolder-templates repo
+spec:
+  targets:
+  - ./scaffolder-templates/simple-static-website-s3/template.yaml

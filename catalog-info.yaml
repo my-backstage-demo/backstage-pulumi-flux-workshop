@@ -32,3 +32,11 @@ spec:
   owner: infrastructure
   description: GitOps System
   domain: gitops-platform
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: gitops-platform
+  description: GitOps Platform
+spec:
+  owner: infrastructure
