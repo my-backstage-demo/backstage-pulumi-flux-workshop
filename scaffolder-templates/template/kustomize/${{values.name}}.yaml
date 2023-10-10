@@ -37,6 +37,10 @@ program:
           suffix: index.html
     index.html:
       type: aws:s3:BucketObject
+      options:
+        dependsOn:
+        - ${webSiteContent}
+        - ${bucketACL}
       properties:
         bucket: ${bucket.id}
         content: |
