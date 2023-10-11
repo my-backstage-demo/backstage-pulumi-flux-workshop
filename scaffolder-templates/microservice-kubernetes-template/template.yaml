@@ -17,12 +17,12 @@ metadata:
   - github
   - kustomize
 spec:
-  owner: user:dirien
-  type: infrastructure
+  owner: group:infrastructure
+  type: service
   parameters:
   - title: Provide project information
     required:
-    - component_id
+    - name
     - owner
     properties:
       name:
