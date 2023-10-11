@@ -16,7 +16,7 @@ metadata:
   - gitops
 spec:
   owner: group:infrastructure
-  type: service
+  type: infrastructure
   parameters:
   - title: Provide project information
     required:
@@ -41,16 +41,15 @@ spec:
         ui:field: EntityPicker
         ui:options:
           catalogFilter:
-            kind:
-            - System
+          - kind: System
       owner:
         title: Owner
         type: string
         description: Owner of the component
         ui:field: OwnerPicker
         ui:options:
-          allowedKinds:
-          - Group
+          catalogFilter:
+          - kind: Group
 
   - title: Configure Pulumi template
     required:
