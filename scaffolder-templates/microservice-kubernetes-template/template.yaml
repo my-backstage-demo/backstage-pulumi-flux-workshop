@@ -180,3 +180,5 @@ spec:
     - title: Open the Catalog Info Component
       icon: catalog
       entityRef: ${{ steps['register'].output.entityRef }}
+    - url: ${{steps['create-flux-pr'].output.remoteUrl}}
+      title: "Go to PR"
