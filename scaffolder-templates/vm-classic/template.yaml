@@ -133,6 +133,12 @@ spec:
         "instanceType": ${{parameters.instanceType}}
         "vpcNetworkCidr": ${{parameters.vpcNetworkCidr}}
 
+  - id: wait
+    name: Wait for template to be fetched
+    action: debug:wait
+    input:
+      seconds: 10
+      
   - id: pulumi-deploy-infrastructure
     name: Deploy the infrastructure using Pulumi CLI
     action: pulumi:up
@@ -178,7 +184,7 @@ spec:
     name: Wait for the repository to be created
     action: debug:wait
     input:
-      seconds: 15
+      seconds: 5
 
   - id: register
     name: Registering the Catalog Info Component

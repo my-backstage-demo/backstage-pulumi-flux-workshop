@@ -118,6 +118,12 @@ spec:
       config:
         "aws:region": ${{parameters.region}}
 
+  - id: wait
+    name: Wait for template to be fetched
+    action: debug:wait
+    input:
+      seconds: 10
+
   - id: pulumi-deploy-infrastructure
     name: Deploy the infrastructure using Pulumi CLI
     action: pulumi:up

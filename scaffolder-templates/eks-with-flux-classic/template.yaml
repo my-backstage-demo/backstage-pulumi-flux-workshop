@@ -135,6 +135,12 @@ spec:
         owner: ${{ parameters.owner }}
         system: ${{ parameters.system }}
 
+  - id: wait
+    name: Wait for template to be fetched
+    action: debug:wait
+    input:
+      seconds: 10
+
   - id: pulumi-deploy-infrastructure
     name: Deploy the infrastructure using Pulumi CLI
     action: pulumi:up
