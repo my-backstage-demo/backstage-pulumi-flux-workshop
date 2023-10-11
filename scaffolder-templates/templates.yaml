@@ -9,3 +9,4 @@ spec:
   - ./vm-classic/template.yaml
   - ./eks-with-flux-classic/template.yaml
   - ./lambda-classic/template.yaml
+  - ./microservice-kubernetes-template/template.yaml
