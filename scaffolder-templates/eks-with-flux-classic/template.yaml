@@ -56,68 +56,69 @@ spec:
     - clusterName
     - organization
     - stack
-    organization:
-      title: Organization
-      type: string
-      description: The Pulumi organization to use for the Pulumi project
-    clusterName:
-      title: Cluster Name
-      description: Name of the EKS cluster
-      type: string
-    region:
-      title: Region
-      type: string
-      enum:
-      - eu-central-1
-      - us-east-1
-      - us-east-2
-      - us-west-1
-      - us-west-2
-      default: eu-central-1
-      description: |
-        The region to deploy the bucket to
-    minClusterSize:
-      title: Min Cluster Size
-      description: Minimum size (number of nodes) of cluster
-      type: integer
-      default: 3
-    maxClusterSize:
-      title: Max Cluster Size
-      description: Maximum size (number of nodes) of cluster
-      type: integer
-      default: 6
-    desiredClusterSize:
-      title: Desired Cluster Size
-      description: Desired number of nodes in the cluster
-      type: integer
-      default: 3
-    eksNodeInstanceType:
-      title: EKS Node Instance Type
-      description: Instance type to use for worker nodes
-      type: string
-      enum:
-      - t3.medium
-      - t3.large
-      - t3.xlarge
-      default: t3.medium
-    vpcNetworkCidr:
-      title: VPC Network CIDR
-      description: Network CIDR to use for new VPC
-      type: string
-      default: 10.0.0.0/16
+    properties:
+      organization:
+        title: Organization
+        type: string
+        description: The Pulumi organization to use for the Pulumi project
+      clusterName:
+        title: Cluster Name
+        description: Name of the EKS cluster
+        type: string
+      region:
+        title: Region
+        type: string
+        enum:
+        - eu-central-1
+        - us-east-1
+        - us-east-2
+        - us-west-1
+        - us-west-2
+        default: eu-central-1
+        description: |
+          The region to deploy the bucket to
+      minClusterSize:
+        title: Min Cluster Size
+        description: Minimum size (number of nodes) of cluster
+        type: integer
+        default: 3
+      maxClusterSize:
+        title: Max Cluster Size
+        description: Maximum size (number of nodes) of cluster
+        type: integer
+        default: 6
+      desiredClusterSize:
+        title: Desired Cluster Size
+        description: Desired number of nodes in the cluster
+        type: integer
+        default: 3
+      eksNodeInstanceType:
+        title: EKS Node Instance Type
+        description: Instance type to use for worker nodes
+        type: string
+        enum:
+        - t3.medium
+        - t3.large
+        - t3.xlarge
+        default: t3.medium
+      vpcNetworkCidr:
+        title: VPC Network CIDR
+        description: Network CIDR to use for new VPC
+        type: string
+        default: 10.0.0.0/16
 
-    stack:
-      title: Select stack
-      type: string
-      enum:
-      - dev
-      - staging
-      - prod
-      enumNames:
-      - Development
-      - Staging
-      - Production
-      description: The pulumi stack to use
+      stack:
+        title: Select stack
+        type: string
+        enum:
+        - dev
+        - staging
+        - prod
+        enumNames:
+        - Development
+        - Staging
+        - Production
+        description: The pulumi stack to use
 
   steps:
   - id: fetch-base
