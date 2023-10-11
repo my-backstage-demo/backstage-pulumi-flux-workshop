@@ -165,7 +165,7 @@ func main() {
 			},
 		}, pulumi.ProviderMap(map[string]pulumi.ProviderResource{
 			"kubernetes": k8sProvider,
-		}))
+		}), pulumi.DependsOn([]pulumi.Resource{eksCluster}))
 		if err != nil {
 			return err
 		}
@@ -182,7 +182,7 @@ serviceAccount:
     eks.amazonaws.com/role-arn: %s
 vpcId: %s`, eksCluster.EksCluster.Name(), awsConfig.Get("region"), albRole.Arn, eksVpc.VpcId),
 			},
-		}, pulumi.Provider(k8sProvider))
+		}, pulumi.Provider(k8sProvider), pulumi.DependsOn([]pulumi.Resource{eksCluster}))
 		if err != nil {
 			return err
 		}
