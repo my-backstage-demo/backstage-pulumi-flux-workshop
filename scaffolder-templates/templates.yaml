@@ -6,3 +6,4 @@ metadata:
 spec:
   targets:
   - ./scaffolder-templates/simple-static-website-s3/template.yaml
+  - ./scaffolder-templates/vm-classic/template.yaml

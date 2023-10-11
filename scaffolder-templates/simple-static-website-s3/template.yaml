@@ -1,12 +1,17 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: pull-request
+  name: simple-static-website-s3
   title: Create static website
   description: |
     A template for creating a new static website on an AWS S3 bucket.
+  tags:
+  - pulumi
+  - aws
+  - s3
+  - static-website
 spec:
-  owner: backstage/techdocs-core
+  owner: group:infrastructure
   type: service
 
   parameters:
