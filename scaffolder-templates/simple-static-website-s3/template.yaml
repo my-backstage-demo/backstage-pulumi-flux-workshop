@@ -12,7 +12,7 @@ metadata:
   - static-website
 spec:
   owner: group:infrastructure
-  type: service
+  type: serverless
 
   parameters:
   - title: Fill in some steps
