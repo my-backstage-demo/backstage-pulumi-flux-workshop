@@ -61,6 +61,22 @@ spec:
         - Staging
         - Production
         description: The pulumi stack to use
+      system:
+        title: System
+        type: string
+        description: System this component belongs to.
+        ui:field: EntityPicker
+        ui:options:
+          catalogFilter:
+          - kind: System
+      owner:
+        title: Owner
+        type: string
+        description: Owner of the component
+        ui:field: OwnerPicker
+        ui:options:
+          catalogFilter:
+          - kind: Group
 
   steps:
   - id: fetch-base
