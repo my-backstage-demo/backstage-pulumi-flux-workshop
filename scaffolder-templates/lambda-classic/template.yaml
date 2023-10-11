@@ -11,7 +11,7 @@ metadata:
   - aws
 spec:
   owner: group:infrastructure
-  type: infrastructure
+  type: serverless
   parameters:
   - title: Provide project information
     required:
