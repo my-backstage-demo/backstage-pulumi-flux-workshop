@@ -7,3 +7,5 @@ spec:
   targets:
   - ./simple-static-website-s3/template.yaml
   - ./vm-classic/template.yaml
+  - ./eks-with-flux-classic/template.yaml
+  - ./lambda-classic/template.yaml
