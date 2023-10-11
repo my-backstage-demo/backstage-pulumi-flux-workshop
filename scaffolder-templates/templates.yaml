@@ -5,5 +5,5 @@ metadata:
   description: All the templates in the scaffolder-templates repo
 spec:
   targets:
-  - ./scaffolder-templates/simple-static-website-s3/template.yaml
-  - ./scaffolder-templates/vm-classic/template.yaml
+  - ./simple-static-website-s3/template.yaml
+  - ./vm-classic/template.yaml
