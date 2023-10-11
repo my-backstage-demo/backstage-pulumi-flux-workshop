@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${{values.name}}-ns
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  labels:
+    backstage.io/kubernetes-id: gitops-cluster
+  name: ${{values.name}}-git-repo
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: main
+  timeout: 60s
+  url: ${{values.repoUrl}}
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  labels:
+    backstage.io/kubernetes-id: gitops-cluster
+  name: ${{values.name}}-kustomization
+  namespace: pulumi-operator
+spec:
+  force: false
+  interval: 1m
+  retryInterval: 1m
+  path: ./kustomize
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: ${{values.name}}-git-repo
+    namespace: flux-system
+  targetNamespace: ${{values.name}}-ns

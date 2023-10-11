@@ -1,4 +1,4 @@
-FROM golang:1.20 as build
+FROM golang:1.21 as build
 WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 go build -o server main.go

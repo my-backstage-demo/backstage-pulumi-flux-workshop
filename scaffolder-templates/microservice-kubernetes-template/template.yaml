@@ -106,11 +106,44 @@ spec:
     input:
       entityRef: ${{ parameters.resource }}
 
+  - id: fetch-flux
+    name: Render Flux template
+    action: fetch:template
+    input:
+      url: ./template-flux
+      values:
+        name: ${{parameters.name}}
+        repoUrl: "https://github.com/${{ (parameters.repoUrl | parseRepoUrl)['owner'] }}/${{ (parameters.repoUrl | parseRepoUrl)['repo'] }}"
+        description: ${{parameters.description}}
+        owner: ${{parameters.owner}}
+
+  - id: create-flux-pr
+    name: Create PR to the Flux repository
+    action: publish:github:pull-request
+    input:
+      repoUrl: github.com?repo=pulumi-gitops-repo&owner=my-backstage-demo
+      title: "Create new project: ${{parameters.name}}"
+      branchName: create-${{parameters.name}}
+      description: |
+        # Create new project: ${{parameters.name}}
+
+        delivered by Flux
+        created by Backstage Scaffolder
+      targetPath: .
+
+  - id: remove-flux-template
+    name: Delete Flux template
+    action: fs:delete
+    input:
+      files:
+      - flux/apps/${{parameters.name}}-application.yaml
+
+
   - id: template
     name: Create Project
     action: fetch:template
     input:
-      url: ./skeleton
+      url: ./template-app
       values:
         name: "${{ parameters.name }}-service"
         description: ${{ parameters.description }}
@@ -120,24 +153,6 @@ spec:
         owner: ${{ parameters.owner }}
         dependsOn: ${{ parameters.resource }}
         scanner: ${{ parameters.scanner }}
-
-  - id: pulumi-new-service
-    name: Create Service Pulumi Project
-    action: pulumi:new
-    input:
-      name: "${{ parameters.name }}-service"
-      description: ${{ parameters.description | dump }}
-      organization: ediri
-      stack: ${{ parameters.stack }}
-      template: "https://github.com/my-silly-organisation/microservice-civo/tree/main/service-${{ parameters.language }}"
-      config:
-        "infra:stack-reference-name": "ediri/${{ steps['fetchSystem'].output.entity.metadata.name }}/${{ parameters.stack }}"
-        "application-name": ${{ parameters.name }}
-        "application-namespace": ${{ parameters.name }}
-        "application-repo-path": kustomize
-        "application-repo-url": "https://github.com/${{ (parameters.repoUrl | parseRepoUrl)['owner'] }}/${{ (parameters.repoUrl | parseRepoUrl)['repo'] }}"
-        "application-repo-target-revision": main
-      folder: service
 
   - id: publish
     name: Publish to GitHub
@@ -157,18 +172,6 @@ spec:
     input:
       repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
       catalogInfoPath: '/catalog-info.yaml'
-
-  - id: pulumi-deploy-services
-    name: Deploy Services (via Deployment)
-    action: pulumi:up
-    input:
-      deployment: false
-      name: "${{ parameters.name }}-service"
-      repoUrl: "https://github.com/${{ (parameters.repoUrl | parseRepoUrl)['owner'] }}/${{ (parameters.repoUrl | parseRepoUrl)['repo'] }}"
-      repoProjectPath: service
-      repoBranch: main
-      organization: ${{ parameters.organization }}
-      stack: ${{ parameters.stack }}
 
   output:
     links:
