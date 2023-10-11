@@ -134,6 +134,13 @@ spec:
         stack: ${{ parameters.stack }}
         owner: ${{ parameters.owner }}
         system: ${{ parameters.system }}
+        "region": ${{parameters.region}}
+        "clusterName": ${{parameters.clusterName}}
+        "minClusterSize": ${{parameters.minClusterSize}}
+        "maxClusterSize": ${{parameters.maxClusterSize}}
+        "desiredClusterSize": ${{parameters.desiredClusterSize}}
+        "eksNodeInstanceType": ${{parameters.eksNodeInstanceType}}
+        "vpcNetworkCidr": ${{parameters.vpcNetworkCidr}}
 
   - id: wait
     name: Wait for template to be fetched
@@ -150,14 +157,6 @@ spec:
       repoUrl: "https://github.com/${{ (parameters.repoUrl | parseRepoUrl)['owner'] }}/${{ (parameters.repoUrl | parseRepoUrl)['repo'] }}"
       repoProjectPath: .
       organization: ${{parameters.organization}}
-      config:
-        "aws:region": ${{parameters.region}}
-        "clusterName": ${{parameters.clusterName}}
-        "minClusterSize": ${{parameters.minClusterSize}}
-        "maxClusterSize": ${{parameters.maxClusterSize}}
-        "desiredClusterSize": ${{parameters.desiredClusterSize}}
-        "eksNodeInstanceType": ${{parameters.eksNodeInstanceType}}
-        "vpcNetworkCidr": ${{parameters.vpcNetworkCidr}}
       outputs:
       - kubeconfig
       stack: ${{ parameters.stack }}
