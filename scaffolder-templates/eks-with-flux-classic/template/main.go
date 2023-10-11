@@ -80,6 +80,10 @@ func main() {
 			NodeAssociatePublicIpAddress: pulumi.BoolRef(false),
 			Name:                         pulumi.String(clusterName),
 			CreateOidcProvider:           pulumi.Bool(true),
+			EndpointPublicAccess:         pulumi.Bool(true),
+			ProviderCredentialOpts: eks.KubeconfigOptionsArgs{
+				ProfileName: pulumi.String("default"),
+			},
 		})
 		if err != nil {
 			return err
