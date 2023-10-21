@@ -1,0 +1,5 @@
+name: ${{ values.name }}
+runtime: nodejs
+description: A minimal AWS TypeScript Pulumi program
+config:
+  aws:region: ${{ values.region }}

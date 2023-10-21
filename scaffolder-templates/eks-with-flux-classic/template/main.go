@@ -81,9 +81,9 @@ func main() {
 			Name:                         pulumi.String(clusterName),
 			CreateOidcProvider:           pulumi.Bool(true),
 			EndpointPublicAccess:         pulumi.Bool(true),
-			ProviderCredentialOpts: eks.KubeconfigOptionsArgs{
-				ProfileName: pulumi.String("default"),
-			},
+			//ProviderCredentialOpts: eks.KubeconfigOptionsArgs{
+			//	ProfileName: pulumi.String("default"),
+			//},
 		})
 		if err != nil {
 			return err
