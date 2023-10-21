@@ -1,4 +1,4 @@
-module template
+module ${{ values.name }}
 
 go 1.21
 
@@ -6,7 +6,7 @@ require (
 	github.com/dustinkirkland/golang-petname v0.0.0-20231002161417-6a283f1aaaf2
 	github.com/pulumi/pulumi-aws/sdk/v5 v5.42.0
 	github.com/pulumi/pulumi-awsx/sdk v1.0.6
-	github.com/pulumi/pulumi-eks/sdk v1.0.3
+	github.com/pulumi/pulumi-eks/sdk v1.0.4
 	github.com/pulumi/pulumi-kubernetes/sdk/v3 v3.30.2
 	github.com/pulumi/pulumi/sdk/v3 v3.88.0
 )
