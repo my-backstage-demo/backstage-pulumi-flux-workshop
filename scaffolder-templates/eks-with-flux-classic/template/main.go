@@ -1,10 +1,10 @@
 package main
 
 import (
+	"${{ values.name }}/internal/gitops"
 	"fmt"
 	"math/rand"
 	"os"
-	"template/internal/gitops"
 	"time"
 
 	petname "github.com/dustinkirkland/golang-petname"
