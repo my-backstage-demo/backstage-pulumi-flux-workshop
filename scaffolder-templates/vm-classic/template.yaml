@@ -180,7 +180,7 @@ spec:
       requiredApprovingReviewCount: 0
       protectDefaultBranch: false
 
-  - id: wait
+  - id: wait-again
     name: Wait for the repository to be created
     action: debug:wait
     input:

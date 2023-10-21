@@ -67,20 +67,6 @@ spec:
         default: eu-central-1
         description: |
           The region to deploy the virtual machine to
-      language:
-        title: Programming Language
-        type: string
-        enum:
-        - go
-        - typescript
-        - yaml
-        - python
-        enumNames:
-        - Go
-        - TypeScript
-        - YAML
-        - Python
-        description: Programming language to use
       stack:
         title: Select stack
         type: string
@@ -151,7 +137,7 @@ spec:
       requiredApprovingReviewCount: 0
       protectDefaultBranch: false
 
-  - id: wait
+  - id: wait-again
     name: Wait for the repository to be created
     action: debug:wait
     input:
