@@ -68,8 +68,8 @@ spec:
         - aws-credentials
         - secret
         enumNames:
-        - Default
-        - Production
+        - Default ESC environment
+        - Demo ESC environment
         description: The pulumi stack to use
       system:
         title: System
