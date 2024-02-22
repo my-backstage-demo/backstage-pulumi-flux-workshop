@@ -61,6 +61,16 @@ spec:
         - Staging
         - Production
         description: The pulumi stack to use
+      ecs:
+        title: Pulumi ECS environment
+        type: string
+        enum:
+        - aws-credentials
+        - secret
+        enumNames:
+        - Default
+        - Production
+        description: The pulumi stack to use
       system:
         title: System
         type: string
@@ -89,6 +99,7 @@ spec:
         content: ${{parameters.content}}
         region: ${{parameters.region}}
         stack: ediri/${{parameters.name}}/${{parameters.stack}}
+        ecs: ${{parameters.ecs}}
 
   - id: publish
     name: Publish

@@ -60,13 +60,20 @@ spec:
     AWS_ACCESS_KEY_ID:
       type: Secret
       secret:
-        name: aws-credentials
+        name: ${{values.ecs}}
         key: AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY:
       type: Secret
       secret:
-        name: aws-credentials
+        name: ${{values.ecs}}
         key: AWS_SECRET_ACCESS_KEY
+    {%- if values.ecs == 'secret' %}
+    AWS_SESSION_TOKEN:
+      type: Secret
+      secret:
+        name: ${{values.ecs}}
+        key: AWS_SESSION_TOKEN
+    {%- endif %}
   programRef:
     name: ${{values.name }}
   destroyOnFinalize: false
