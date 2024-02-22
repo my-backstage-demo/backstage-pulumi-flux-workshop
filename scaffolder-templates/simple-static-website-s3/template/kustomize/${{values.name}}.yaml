@@ -67,13 +67,6 @@ spec:
       secret:
         name: ${{values.ecs}}
         key: AWS_SECRET_ACCESS_KEY
-    {%- if values.ecs == 'secret' %}
-    AWS_SESSION_TOKEN:
-      type: Secret
-      secret:
-        name: ${{values.ecs}}
-        key: AWS_SESSION_TOKEN
-    {%- endif %}
   programRef:
     name: ${{values.name }}
   destroyOnFinalize: false
